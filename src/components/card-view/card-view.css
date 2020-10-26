@@ -1,0 +1,9 @@
+.card-view {
+  flex: 3;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  height: auto;
+  background-color:whitesmoke;
+  margin: 60px 5px;
+}

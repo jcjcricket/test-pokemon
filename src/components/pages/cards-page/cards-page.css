@@ -1,0 +1,7 @@
+.cards-page {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  padding: 0 16px 0 16px;
+  height: 100%;
+}

@@ -12,31 +12,42 @@ const pokeApi = new PokeApi();
 
 const CardsPage = ({ isLoggedIn }) => {
   const [cards, setCards] = useState({ cards: [] });
-  const [types, setTypes] = useState([]);
-  const [subTypes, setSubTypes] = useState([]);
+  const [types, setTypes] = useState({ types: [] });
+  const [subtypes, setSubTypes] = useState({ subtypes: [] });
+  const [selectedType, setselectedType] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
 
     async function fetchData() {
-      const data = await pokeApi.getAllCards();
-      setCards(data);
-      setIsLoading(false);
+      const dataTypes = await pokeApi.getTypesList();
+      const dataSubTypes = await pokeApi.getSubtypesList();
+      setTypes(dataTypes);
+      setSubTypes(dataSubTypes);
+      if (selectedType) {
+        const data = await pokeApi.getTypeOf(selectedType);
+        setCards(data);
+        setIsLoading(false);
+      } else {
+        const data = await pokeApi.getAllCards();
+        setCards(data);
+        setIsLoading(false);
+      }
     }
     fetchData();
-  }, []);
+  }, [selectedType]);
 
-  if (!isLoggedIn) {
-    return <Redirect to='login' />;
-  }
+  const handleSelect = (e) => {
+    setselectedType(e.target.value);
+  };
 
   if (isLoading) {
     return <Spinner />;
   }
   return (
     <div className='cards-page'>
-      <SideBar />
+      <SideBar types={types} subtypes={subtypes} handleSelect={handleSelect} />
       <CardView cards={cards} />
     </div>
   );

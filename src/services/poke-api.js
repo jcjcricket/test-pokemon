@@ -19,20 +19,20 @@ class PokeApi {
     return await this.getResource(`https://api.pokemontcg.io/v1/cards/${id}/`);
   }
 
-  getTypesList() {
-    return this.getResource(`https://api.pokemontcg.io/v1/types/`);
+  async getTypesList() {
+    return await this.getResource(`https://api.pokemontcg.io/v1/types/`);
   }
 
-  getSubtypesList() {
-    return this.getResource(`https://api.pokemontcg.io/v1/subtypes/`);
+  async getSubtypesList() {
+    return await this.getResource(`https://api.pokemontcg.io/v1/subtypes/`);
   }
 
-  getTypeOf(id) {
-    return this.getResource(`https://pokemontcg.io/cards?type=${id}/`);
+  async getTypeOf(id) {
+    return await this.getResource(`https://api.pokemontcg.io/v1/cards?types=${id}`);
   }
 
-  getSubtypeOf(id) {
-    return this.getResource(`https://pokemontcg.io/cards?subtype=${id}/`);
+  async getSubtypeOf(id) {
+    return await this.getResource(`https://api.pokemontcg.io/v1/cards?subtype=${id}`);
   }
 }
 

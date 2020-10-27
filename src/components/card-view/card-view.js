@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 
 import CardViewItem from '../card-view-item';
 
 import './card-view.css';
 
-const CardView = () => {
+const CardView = ({ cards: { cards } }) => {
+  let data = cards.map((i) => {
+    return <CardViewItem info={i} key={i.id} />;
+  });
+
   return (
     <div className='card-view'>
-      <div className='card-view-row'>
-        <CardViewItem />
-        <CardViewItem />
-      </div>
-      <div className='card-view-row'>
-        <CardViewItem />
-        <CardViewItem />
+      <div className='card-view-column'>
+        <div className='card-view-row'>{data}</div>
       </div>
     </div>
   );

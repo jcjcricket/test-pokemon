@@ -1,11 +1,17 @@
 .card-view-item {
   width: auto;
-  background-color: teal;
+  border: 1px solid #1a1c20;
+  margin: 10px 10px ;
+  background-color:  #fcf1f1;
+  box-shadow: 10px 5px 5px #1a1c20;
 }
 
-.card-view-item .img-container {
+.card-view-item img {
   width: 100%;
-  height: 150px;
-  background-color: tomato;
-  margin: 20px 20px;
+  height: auto;
+
+}
+
+.card-view-item p {
+  margin-left: 5px;
 }

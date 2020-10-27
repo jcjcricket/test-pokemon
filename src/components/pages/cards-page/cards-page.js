@@ -1,32 +1,43 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import CardView from '../../card-view';
 import SideBar from '../../sidebar';
-import NavBar from '../../navbar';
+import Spinner from '../../spinner';
 
 import './cards-page.css';
 
-const _apiBase = `https://api.pokemontcg.io/v1/cards`;
+import PokeApi from '../../../services/poke-api';
 
-const CardsPage = () => {
-  const [cards, setCards] = useState([]);
+const pokeApi = new PokeApi();
+
+const CardsPage = ({ isLoggedIn }) => {
+  const [cards, setCards] = useState({ cards: [] });
+  const [types, setTypes] = useState([]);
+  const [subTypes, setSubTypes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchCards = async () => {
-      const response = await fetch(_apiBase);
-      const data = await response.json();
-      setCards(data);
-    };
+    setIsLoading(true);
 
-    fetchCards();
+    async function fetchData() {
+      const data = await pokeApi.getAllCards();
+      setCards(data);
+      setIsLoading(false);
+    }
+    fetchData();
   }, []);
 
-  console.log(cards);
+  if (!isLoggedIn) {
+    return <Redirect to='login' />;
+  }
 
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <div className='cards-page'>
-      <NavBar />
       <SideBar />
-      <CardView />
+      <CardView cards={cards} />
     </div>
   );
 };

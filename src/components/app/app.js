@@ -21,7 +21,7 @@ export const LoginContext = React.createContext();
 function App() {
   const [inApp, setinApp] = useState(false);
   const [smsCode, setSmsCode] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isWarning, setWarning] = useState({ isWarning: false, text: '' });
 
   const loginAndPassword = {

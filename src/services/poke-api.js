@@ -1,6 +1,4 @@
-const _apiBase = `https://api.pokemontcg.io/v1/cards`;
-const _apiTypes = `https://api.pokemontcg.io/v1/types`;
-const _apiSubTypes = `https://api.pokemontcg.io/v1/subtypes`;
+
 
 class PokeApi {
   async getResource(url) {

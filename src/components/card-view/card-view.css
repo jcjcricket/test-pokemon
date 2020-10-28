@@ -1,4 +1,5 @@
 .card-view {
+  flex: 3;
   overflow: scroll;
 }
 

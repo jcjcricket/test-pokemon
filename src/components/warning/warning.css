@@ -1,0 +1,17 @@
+.warning {
+  background-color: #ffbb00;
+  padding: 20px;
+  margin: 10px 10px;
+  font-size: large;
+  border-radius: 20px;
+  animation: fadein 0.2s 1;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

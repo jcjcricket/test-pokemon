@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
 import CardView from '../../card-view';
 import SideBar from '../../sidebar';
 import Spinner from '../../spinner';
@@ -11,7 +10,7 @@ import PokeApi from '../../../services/poke-api';
 
 const pokeApi = new PokeApi();
 
-const CardsPage = ({ isLoggedIn }) => {
+const CardsPage = ({ handleLogout }) => {
   const [cards, setCards] = useState({ cards: [] });
   const [types, setTypes] = useState({ types: [] });
   const [subtypes, setSubTypes] = useState({ subtypes: [] });
@@ -52,15 +51,17 @@ const CardsPage = ({ isLoggedIn }) => {
     return <Spinner />;
   }
   return (
-    <div className='cards-page'>
-      <Navbar />
-      <div className='cards-page-container'>
-        <SideBar
-          types={types}
-          subtypes={subtypes}
-          handleSelect={handleSelect}
-        />
-        <CardView cards={cards} />
+    <div>
+      <Navbar handleLogout={handleLogout} />
+      <div className='page'>
+        <div className='cards-page-container'>
+          <SideBar
+            types={types}
+            subtypes={subtypes}
+            handleSelect={handleSelect}
+          />
+          <CardView cards={cards} />
+        </div>
       </div>
     </div>
   );

@@ -1,13 +1,27 @@
-.navbar > ul {
-  display: flex;
+.navbar {
+  background-color: whitesmoke;
+}
+
+.navbar ul {
   list-style-type: none;
+  display: flex;
   justify-content: space-between;
   margin: 0;
   padding: 15px;
 }
 
-.navbar > ul  a {
+.navbar > ul a {
   text-decoration: none;
   color: black;
   font-size: 1.2rem;
+}
+
+.navbar > ul a:visited {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.navbar-logout:hover {
+  text-shadow: 1px 1px 2px violet;
 }

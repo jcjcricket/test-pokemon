@@ -1,12 +1,18 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import Warning from '../../warning';
 
 import './login-page.css';
 
-const LoginPage = ({ handleLoginInput, handleLoginSubmit, isLoggedIn, inApp }) => {
-
+const LoginPage = ({
+  handleLoginInput,
+  handleLoginSubmit,
+  isLoggedIn,
+  inApp,
+  isWarning: { isWarning, text },
+}) => {
   if (inApp) {
-    return <Redirect to='/password' />
+    return <Redirect to='/password' />;
   }
 
   if (isLoggedIn) {
@@ -14,32 +20,34 @@ const LoginPage = ({ handleLoginInput, handleLoginSubmit, isLoggedIn, inApp }) =
   }
 
   return (
-    <form onSubmit={handleLoginSubmit}>
-      <div className='container'>
-        <label htmlFor='uname'>
-          <b>Username</b>
-        </label>
-        <input
-          type='text'
-          placeholder='Enter Username'
-          name='uname'
-          required
-          onKeyUp={(e) => handleLoginInput(e)}
-        />
+    <div className='login-page'>
+      <form onSubmit={handleLoginSubmit}>
+        <div className='container'>
+          {isWarning ? <Warning text={text} /> : null}
+          <label htmlFor='uname'>
+            <b>Username</b>
+          </label>
+          <input
+            type='text'
+            name='uname'
+            required
+            onKeyUp={(e) => handleLoginInput(e)}
+          />
 
-        <label htmlFor='psw'>
-          <b>Password</b>
-        </label>
-        <input
-          type='password'
-          placeholder='Enter Password'
-          name='psw'
-          required
-          onKeyUp={(e) => handleLoginInput(e)}></input>
+          <label htmlFor='psw'>
+            <b>Password</b>
+          </label>
+          <input
+            type='password'
+            name='psw'
+            required
+            onKeyUp={(e) => handleLoginInput(e)}
+          />
 
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+          <button type='submit'>Login</button>
+        </div>
+      </form>
+    </div>
   );
 };
 

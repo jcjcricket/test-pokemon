@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  BrowserRouter as Router,
   Link,
-  Switch,
-  Route,
-  Redirect,
+ 
 } from 'react-router-dom';
 
 import './card-view-item.css';
@@ -12,7 +9,7 @@ import './card-view-item.css';
 const CardViewItem = ({ info }) => {
 
   return (
-      <Link to={`/cards/${info.id}`}>
+    <Link style={{textDecoration: 'none', wordWrap: 'break-word'}} to={`/cards/${info.id}`}>
         <div className='card-view-item' id={info.id}>
           <img src={info.imageUrl} alt='' />
           <p>Name: {info.name} </p>

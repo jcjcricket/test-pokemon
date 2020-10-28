@@ -1,10 +1,5 @@
-import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import React from 'react';
+
 
 import CardViewItem from '../card-view-item';
 
@@ -17,9 +12,7 @@ const CardView = ({ cards: { cards } }) => {
 
   return (
     <div className='card-view'>
-      <div className='card-view-column'>
         <div className='card-view-row'>{data}</div>
-      </div>
     </div>
   );
 };

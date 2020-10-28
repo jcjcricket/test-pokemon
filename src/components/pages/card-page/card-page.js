@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Spinner from '../../spinner';
 
 import PokeApi from '../../../services/poke-api';
+
+import Navbar from '../../navbar';
 
 import './card-page.css';
 
@@ -22,40 +23,43 @@ const CardPage = ({ itemId }) => {
 
   return (
     <div className='card-page'>
-      <div className='img-container'>
-        <img src={data.imageUrlHiRes} alt='pokemon_card' />
-        <div>
-          {data.attacks
-            ? data.attacks.map((i) => <p key={i.id}>{i.text} </p>)
-            : '-'}
+      <Navbar />
+      <div className='card-page-container'>
+        <div className='img-container'>
+          <img src={data.imageUrlHiRes} alt='pokemon_card' />
+          <div>
+            {data.attacks
+              ? data.attacks.map((i) => <p key={i.id}>{i.text} </p>)
+              : '-'}
+          </div>
         </div>
-      </div>
 
-      <div className='pokemon-details'>
-        <ul>
-          <li>Pokemon name: {data.name ? data.name : '-'}</li>
-          <li>Type: {data.types ? data.types : '-'}</li>
-          <li>Subtype: {data.subtype ? data.subtype : '-'}</li>
-          <hr />
-          <ol>
-            attack damage:{' '}
-            {data.attacks
-              ? data.attacks.map((i) => <li key={i.id}>{i.damage} </li>)
-              : '-'}
-          </ol>
-          <ol>
-            attack cost:{' '}
-            {data.attacks
-              ? data.attacks.map((i) => <li key={i.id}>{i.cost} </li>)
-              : '-'}
-          </ol>
-          <li>
-            resistances:{' '}
-            {data.resistances ? data.resistances.map((i) => i.type) : '-'}
-            {data.resistances ? data.resistances.map((i) => i.value) : '-'}
-          </li>
-          <li>evolves from: {data.evolvesFrom ? data.evolvesFrom : '-'}</li>
-        </ul>
+        <div className='pokemon-details'>
+          <ul>
+            <li>Pokemon name: {data.name ? data.name : '-'}</li>
+            <li>Type: {data.types ? data.types : '-'}</li>
+            <li>Subtype: {data.subtype ? data.subtype : '-'}</li>
+            <hr />
+            <ol>
+              Attack Damage:{' '}
+              {data.attacks
+                ? data.attacks.map((i) => <li key={i.id}>{i.damage} </li>)
+                : '-'}
+            </ol>
+            <ol>
+              Attack Cost:{' '}
+              {data.attacks
+                ? data.attacks.map((i) => <li key={i.id}>{i.cost} </li>)
+                : '-'}
+            </ol>
+            <li>
+              Resistances:{' '}
+              {data.resistances ? data.resistances.map((i) => i.type) : '-'}
+              {data.resistances ? data.resistances.map((i) => i.value) : '-'}
+            </li>
+            <li>Evolves From: {data.evolvesFrom ? data.evolvesFrom : '-'}</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

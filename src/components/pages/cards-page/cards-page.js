@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import CardView from '../../card-view';
 import SideBar from '../../sidebar';
 import Spinner from '../../spinner';
+import Navbar from '../../navbar';
 
 import './cards-page.css';
 
@@ -25,8 +26,12 @@ const CardsPage = ({ isLoggedIn }) => {
       const dataSubTypes = await pokeApi.getSubtypesList();
       setTypes(dataTypes);
       setSubTypes(dataSubTypes);
-      if (selectedType) {
+      if (types.types.includes(selectedType)) {
         const data = await pokeApi.getTypeOf(selectedType);
+        setCards(data);
+        setIsLoading(false);
+      } else if (subtypes.subtypes.includes(selectedType)) {
+        const data = await pokeApi.getSubtypeOf(selectedType);
         setCards(data);
         setIsLoading(false);
       } else {
@@ -40,6 +45,7 @@ const CardsPage = ({ isLoggedIn }) => {
 
   const handleSelect = (e) => {
     setselectedType(e.target.value);
+    console.log(e.target.value);
   };
 
   if (isLoading) {
@@ -47,8 +53,15 @@ const CardsPage = ({ isLoggedIn }) => {
   }
   return (
     <div className='cards-page'>
-      <SideBar types={types} subtypes={subtypes} handleSelect={handleSelect} />
-      <CardView cards={cards} />
+      <Navbar />
+      <div className='cards-page-container'>
+        <SideBar
+          types={types}
+          subtypes={subtypes}
+          handleSelect={handleSelect}
+        />
+        <CardView cards={cards} />
+      </div>
     </div>
   );
 };

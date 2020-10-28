@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,12 +10,12 @@ import LoginPage from '../pages/login-page';
 import PasswordPage from '../pages/password-page';
 import CardsPage from '../pages/cards-page';
 import CardPage from '../pages/card-page';
-import NavBar from '../navbar';
 
-import Spinner from '../spinner';
 import { generateRandomNum } from '../../utils/randomNum';
 
 import './app.css';
+
+export const LoginContext = React.createContext();
 
 function App() {
   const [inApp, setinApp] = useState(false);
@@ -65,67 +65,67 @@ function App() {
   };
 
   return (
-    <Router>
-      {/* <NavBar /> */}
+    <LoginContext.Provider value={isLoggedIn}>
+      <Router>
+        <div className='app'>
+          <Switch>
+            <Route
+              path='/login'
+              exact
+              render={() => {
+                return (
+                  <LoginPage
+                    handleLoginInput={handleLoginInput}
+                    handleLoginSubmit={handleLoginSubmit}
+                    isLoggedIn={isLoggedIn}
+                    inApp={inApp}
+                  />
+                );
+              }}
+            />
+            <Route
+              path='/password'
+              exact
+              render={() => {
+                return (
+                  <PasswordPage
+                    isLoggedIn={isLoggedIn}
+                    inApp={inApp}
+                    smsCode={smsCode}
+                    handlePinInput={handlePinInput}
+                    handlePinSubmit={handlePinSubmit}
+                  />
+                );
+              }}
+            />
+            <Route
+              path='/'
+              exact
+              isLoggedIn={isLoggedIn}
+              render={() => {
+                if (!isLoggedIn) {
+                  return <Redirect to='/login' />;
+                }
+                return <CardsPage isLoggedIn={isLoggedIn} />;
+              }}
+            />
+            <Route
+              path='/cards/:id'
+              exact
+              render={({ match }) => {
+                if (!isLoggedIn) {
+                  return <Redirect to='/login' />;
+                }
+                let id = match.params.id;
 
-      <div className='app'>
-        <Switch>
-          <Route
-            path='/login'
-            exact
-            render={() => {
-              return (
-                <LoginPage
-                  handleLoginInput={handleLoginInput}
-                  handleLoginSubmit={handleLoginSubmit}
-                  isLoggedIn={isLoggedIn}
-                  inApp={inApp}
-                />
-              );
-            }}
-          />
-          <Route
-            path='/password'
-            exact
-            render={() => {
-              return (
-                <PasswordPage
-                  isLoggedIn={isLoggedIn}
-                  inApp={inApp}
-                  smsCode={smsCode}
-                  handlePinInput={handlePinInput}
-                  handlePinSubmit={handlePinSubmit}
-                />
-              );
-            }}
-          />
-          <Route
-            path='/'
-            exact
-            isLoggedIn={isLoggedIn}
-            render={() => {
-              if (!isLoggedIn) {
-                return <Redirect to='/login' />;
-              }
-              return <CardsPage isLoggedIn={isLoggedIn} />;
-            }}
-          />
-          <Route
-            path='/cards/:id'
-            exact
-            render={({ match }) => {
-              if (!isLoggedIn) {
-                return <Redirect to='/login' />;
-              }
-              let id = match.params.id;
-
-              return <CardPage itemId={id} />;
-            }}
-          />
-          <Redirect to='/' />
-        </Switch>
-      </div>
-    </Router>
+                return <CardPage itemId={id} />;
+              }}
+            />
+            <Redirect to='/' />
+          </Switch>
+        </div>
+      </Router>
+    </LoginContext.Provider>
   );
 }
 

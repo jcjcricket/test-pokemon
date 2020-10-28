@@ -1,14 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-import './navbar.css'
+import { LoginContext } from '../app/app';
+
+import './navbar.css';
 
 const NavBar = () => {
-  return <nav className='navbar'>
-    <ul>
-      <li>Back</li>
-      <li>Logout</li>
-    </ul>
-  </nav>;
+  const isLoggedIn = useContext(LoginContext);
+  let history = useHistory();
+
+  return (
+    <div className='navbar'>
+      <ul>
+        <li>
+          <Link
+            class='nav-link active'
+            to=''
+            onClick={() => {
+              history.goBack();
+            }}>
+            Back
+          </Link>
+        </li>
+        <li>
+          <Link to=''>{isLoggedIn ? 'Logout123' : 'Login'}</Link>
+        </li>
+      </ul>
+    </div>
+  );
 };
 
 export default NavBar;

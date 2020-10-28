@@ -4,9 +4,8 @@ import './sidebar.css';
 
 const SideBar = ({ types, subtypes, handleSelect }) => {
   return (
-    <div>
       <div className='sidebar'>
-        <div>
+      <div>
           <select
             className='select'
             name='type'
@@ -23,7 +22,8 @@ const SideBar = ({ types, subtypes, handleSelect }) => {
           <select
             className='select'
             name='type'
-            onChange={(e) => handleSelect(e)}>
+          onChange={(e) => handleSelect(e)}>
+           <option value="0" hidden>Select Subtype:</option>
             {subtypes.subtypes.map((i) => {
               return (
                 <option value={i} key={i}>
@@ -34,7 +34,6 @@ const SideBar = ({ types, subtypes, handleSelect }) => {
           </select>
         </div>
       </div>
-    </div>
   );
 };
 

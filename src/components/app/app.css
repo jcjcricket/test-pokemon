@@ -1,6 +1,8 @@
 .app {
   font-family: 'Comic Neue', cursive;
-  padding: 0 5px 0 5px;
-  height: 100%;
-  margin: 0 5%;
+  margin: auto;
+  height: auto;
+  width: 85%;
+  background-color: whitesmoke;
+  padding: 10px;
 }

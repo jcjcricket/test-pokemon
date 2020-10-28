@@ -1,27 +1,9 @@
 .card-view {
-  flex: 3;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-  height: auto;
-  width: 100px;
-  max-width: 900px;
-  background-color:whitesmoke;
-  margin: 60px 5px;
   overflow: scroll;
-}
-
-.card-view-column {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 20px 0 20px 0;
 }
 
 .card-view-row {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  margin: 20px 0 20px 0;
+  overflow: scroll;
 }

@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Первое задание
+Напишите функцию getObjectProperty.
 
-## Available Scripts
+Она получает три аргумента:
 
-In the project directory, you can run:
+первым — объект
+вторым — путь к вложенному свойству объекта
+третьим (опциональный аргумент функции) — значение по умолчанию, которое возвращается, если значения по указанному пути не существует
+Функция возвращает значение указанного свойства, либо undefined, если свойства не существует.
 
-### `npm start`
+Стоит придумать своё решение без подключения библиотек и внешней помощи. Мы хотим убедиться в ваших навыках преобразования данных.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Второе задание
+Требуется реализовать приложение для просмотра распределенных по категориям карточек с Покемонами.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Функциональность
+Приложение содержит 4 экрана (прототипы представлены ниже):
 
-### `npm test`
+1. Экран авторизации
+Страница представляет собой форму авторизации с валидацией соответствующих полей (логина и пароля).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Авторизация — НЕ серверная, введённые данные достаточно проверить на клиенте.
 
-### `npm run build`
+2. Экран подтверждения одноразового пароля
+Подтверждение логина реализованное с помощью One Time Password (OTP).
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Достаточно проверки на клиенте как и для первого экрана. Вы можете предложить свои варианты валидации и обработки ошибок.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+3. Экран категорий и просмотра карточек
+Выбор категорий и просмотр соответствующего им списка карточек Покемонов.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Изменяя категории в селектах вы получаете данные с сервера.
 
-### `npm run eject`
+Используйте публичное API – https://pokemontcg.io/.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. Просмотр карточки Покемона
+Страница представляет собой отдельный экран с детальной информацией по Покемону.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Задания со звёзочкой
+Если вы выполните следующие пункты (частично или полностью), то мы сможем точнее определить ваш уровень и степень вовлечённости. От этого зависит программа курса, собеседование и ваша оценка на протяжении стажировки.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Мы понимаем, что не все имеют достаточный опыт и/или возможности для выполения этих задач, поэтому оставляем их добровольными. Но тем ценнее их выполнение 😉
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ Компонент «Селект категорий» написан самостоятельно. Макет прототипа
+ Пагинация карточек. Макет прототипа
+ Любые анимации интерфейса
+ Быстрый просмотр покемона в модальном окне по клику на карточку
+ Сохранение сессии авторизованного пользователя после закрытия вкладки браузера. Например, через local storage браузера
+ Адаптивный дизайн
+Стэк
+Create React App
+Function components + React Hooks
+React-router
+Результаты
+Срок
+Две недели: ДО 28 ОКТЯБРЯ ВКЛЮЧИТЕЛЬНО
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Условия принятия
+Репозиторий на Github с решением задач
+Вторая задача доступна на Github Pages и открывается по url
+About Github Pages
+Одно из решений по автоматическому деплою на gh-pages
+Доступ в приложение по ключам:
+Логин — kode@kode.ru
+Пароль — Enk0deng
+В README.md репозитория указаны:
+Декомпозиция: разбиение на подзадачи, их изначальная оценка и примерное время выполнения
+Описание возникших сложностей в процессе
+Что сделано из задач со звёздочкой
+Ссылки на решённые задачи отправлены нам ответным письмом
